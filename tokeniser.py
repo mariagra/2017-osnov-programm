@@ -34,7 +34,7 @@ while line:
 		if token == '':
 			continue
 		# print out the token id, the token itself and 8 empty columns
-		print ('%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_' % (token_id, token))
+		print ('%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_' % (token_id, token))
 		# increase counting index of tokens in the line
 		token_id += 1
 	# increase counting index of lines
