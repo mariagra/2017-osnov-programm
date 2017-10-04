@@ -13,10 +13,16 @@ while line:
 	line = line.strip()
 	print ('# text = %s' % (line))
 	# replace punctuation with space + punctuation
+	line = line.replace ('.', ' . ')
 	line = line.replace (',', ' ,')
+	line = line.replace ('?', ' ?')
+	line = line.replace ('!', ' !')
 	line = line.replace (':', ' :')
 	line = line.replace (')', ' )')
-	line = line.replace ('(', ' (')
+	line = line.replace ('(', '( ')
+	line = line.replace ('„', '„ ')
+	line = line.replace ('“', '“ ')
+	line = line.replace ('"', ' " ')
 	# split the line into tokens with the ' ' character
 	line=line.split(' ')
 	tokens.append(line)
@@ -24,7 +30,10 @@ while line:
 	token_id = 1
 	# for each of the tokens in the line
 	for token in line:
-	# print out the token id, the token itself and 8 empty columns
+		token = token.strip()
+		if token == '':
+			continue
+		# print out the token id, the token itself and 8 empty columns
 		print ('%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_' % (token_id, token))
 		# increase counting index of tokens in the line
 		token_id += 1
