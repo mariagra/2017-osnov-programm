@@ -7,6 +7,7 @@ index = 1
 line = sys.stdin.readline()
 # while we have not read the whole file
 while line: 
+	line=line.strip()
 	if line != '':
 		# print out the sentence id
 		print('# sent_id = %d' % (index))
