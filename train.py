@@ -1,7 +1,7 @@
 import sys
 # mapping between form + tag -> frequency
 m = {} # m['house']['NOUN'] = 0
-
+m_freq = {} # dictionary for calculating frequency of tags
 c = 0
 # read through each of the lines
 for line in sys.stdin.readlines():
@@ -25,11 +25,20 @@ for line in sys.stdin.readlines():
 	m[form][tag] = m[form][tag] + 1 #increment the count by 1
 	c = c + 1
 
+	# the same with m_freq (frequency of the tag)
+	if tag not in m_freq:
+		m_freq[tag] = 0
+	m_freq[tag] = m_freq[tag] + 1
+
 print ('# P \t count \t tag \t form')
+
+for line in m_freq:
+	a = m_freq[line]
+	b = a/c
+	print (b,'\t',m_freq[line],'\t',line,'\t', '-')
 
 for line in m:
 	for tag in m[line]:
-		#print (line, tag, m[line][tag])
 		a = m[line][tag]
 		b = a/c
 		print (b,'\t',m[line][tag],'\t',tag,'\t',line)
