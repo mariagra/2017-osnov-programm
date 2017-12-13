@@ -11,14 +11,43 @@ while line:
 	print('Original sentence = %s' % (line)) # Printed the original sentence. 
 	# Now we will work with the changed sentence
 	# which will be printed after this original one.
-	print ('Changed sentence = %s' % (line))
+
+	# I am replacing punctuation with space + punctuation 
+	# because I will simetimes replace some words from macedonuian to Russian (like a dictionary)
+	# that's why I need to work with words without punctuation. 
+	# Afterwars we will remove this space between the word and punctuation mark
+	line = line.replace ('.', ' .')
+	line = line.replace (',', ' ,')
+	line = line.replace ('?', ' ?')
+	line = line.replace ('!', ' !')
+	line = line.replace (':', ' :')
+	line = line.replace (')', ' )')
+	line = line.replace ('(', '( ')
+	line = line.replace ('„', '„ ')
+	line = line.replace ('“', ' “')
+	line = line.replace ('"', ' " ')
 
 
+# Transliteration first
+# Then changing of the words (prononouns + aux verbs)
+# Check whether changibg part of the word is a good idea
 	
+	# We are returning the punctuational marks to the original position
+	line = line.replace (' .', '.')
+	line = line.replace (' ,', ',')
+	line = line.replace (' ?', '?')
+	line = line.replace (' !', '!')
+	line = line.replace (' :', ':')
+	line = line.replace (' )', ')')
+	line = line.replace ('( ', '(')
+	line = line.replace ('„ ', '„')
+	line = line.replace (' “', '“')
+	line = line.replace (' " ', '"')
+
 	line = sys.stdin.readline() #Thisline should be in the end of this while line
 
 
-# ------------------------------------------------------------------- above is made, below is in process
+# ------------------------------------------------------------------- above is made, below is in process (actually it is the middle part)
 # Copied from transliterator and will be changed afterwars
 
 table = {'а':'a',
