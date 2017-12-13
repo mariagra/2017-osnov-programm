@@ -2,6 +2,7 @@ import sys
 # mapping between form + tag -> frequency
 m = {} # m['house']['NOUN'] = 0
 
+c = 0
 # read through each of the lines
 for line in sys.stdin.readlines():
 	# if the line is a comment, skip it
@@ -22,5 +23,15 @@ for line in sys.stdin.readlines():
 		m[form][tag] = 0
 
 	m[form][tag] = m[form][tag] + 1 #increment the count by 1
+	c = c + 1
 
-print(m)
+print ('# P \t count \t tag \t form')
+
+for line in m:
+	for tag in m[line]:
+		#print (line, tag, m[line][tag])
+		a = m[line][tag]
+		b = a/c
+		print (b,'\t',m[line][tag],'\t',tag,'\t',line)
+	
+
