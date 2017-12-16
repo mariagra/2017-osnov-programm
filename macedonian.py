@@ -78,7 +78,7 @@ while line:
 		if line[0] == '#': #if the line is a comment
 				print (line)
 				continue
-		print('Original sentence = %s' % (line)) # Printed the original sentence. 
+		print('Original text = %s' % (line)) # Printed the original text. 
 		# Now we will work with the changed sentence
 		# which will be printed after this original one.
 
@@ -97,27 +97,52 @@ while line:
 		line = line.replace ('“', ' “')
 		line = line.replace ('"', ' " ')
 
-		# Now we start working with the words
-		for word in line: 
-			for c in table1: 
-				word = word.replace(c, table1[c]) # First step of transliteration = change the letters according to the first dictionary
+		# Now we start working with the words 
+		for c in table1: 
+			line = line.replace(c, table1[c]) # First step of transliteration = change the letters according to the first dictionary
 
-		for word in line: 
-			for c in table2: 
-				word = word.replace(c, table2[c]) # Second step of transliteration 
+		for c in table2: 
+			line = line.replace(c, table2[c]) # Second step of transliteration 
 
 
 		# We are  translating some of the words and some of the words'parts
 		# We will use spaces in the beginning or/and in the end of the word
 		# to identify that we work with the word or that we work only with the end of the word
-		line = line.replace (' йас ', ' я ')  # from here start pronouns
+		line = line.replace (' йас ', ' я ')  # from here start pronouns (starting from NOM)
 		line = line.replace (' ти ', ' ты ')
+		line = line.replace (' ние ', ' мы ')
+		line = line.replace (' вие ', ' вы ')
+		line = line.replace (' той ', ' он ')
+		line = line.replace (' тоа ', ' оно ')
+		line = line.replace (' таа ', ' она ')
+		line = line.replace (' тие ', ' они ')
+		line = line.replace (' мене ', ' меня/мне ') # starting ACC (and DAT if they are the same)
+		line = line.replace (' ме ', ' меня ')
+		line = line.replace (' тебе ', ' тебя/тебе ')
+		line = line.replace (' те ', ' тебя ')
+		line = line.replace (' себе ', ' себя/себе ')
+		line = line.replace (' се ', ' себя ')
+		line = line.replace (' ве ', ' вас ') # some forms are the same in Russian and Macedonian
+		# e.g. vas in Macedonian = вас in Russian. They won't be in this list of changes.
+		line = line.replace (' него ', ' его ')
+		line = line.replace (' го ', ' его ')		
+		line = line.replace (' неа ', ' её ')
+		line = line.replace (' йа ', ' её ')	
+		line = line.replace (' нив ', ' их ')	
+		line = line.replace (' ги ', ' их ')	
+		line = line.replace (' ми ', ' мне ') # starting DAT (the rest)
+		line = line.replace (' ти ', ' тебе ')
+		line = line.replace (' си ', ' себе ')
+		line = line.replace (' ни ', ' нам ')
+		line = line.replace (' ви ', ' вам ')
+		line = line.replace (' нему ', ' ему ')
+		line = line.replace (' му ', ' ему ')
+		line = line.replace (' нейзе ', ' ей ')
+		line = line.replace (' ним ', ' им ')
+
 		line = line.replace ('ски ', 'ский ') # from here start endings
 		line = line.replace ('ска ', 'ская ')
 		line = line.replace ('ско', 'ское ')
-
-# I will increase the number of pronouns later, now want to fix programming problems
-# And I wil do the separate file which explains what is the program + example of output
 	
 		# We are returning the punctuational marks to the original position
 		line = line.replace (' .', '.')
@@ -131,7 +156,9 @@ while line:
 		line = line.replace (' “', '“')
 		line = line.replace (' " ', '"')
 
-		print('Changed sentence = %s' % (line)) # Printed the changed sentence. 
+		print('Changed text = %s' % (line)) # Printed the changed text. 
+
+		line = sys.stdin.readline()
 
 
 
