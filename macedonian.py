@@ -140,6 +140,8 @@ while line:
 		line = line.replace (' нейзе ', ' ей ')
 		line = line.replace (' ним ', ' им ')
 
+# I will add possessive pronouns later
+
 		line = line.replace ('ски ', 'ский ') # from here start endings
 		line = line.replace ('ска ', 'ская ')
 		line = line.replace ('ско', 'ское ')
