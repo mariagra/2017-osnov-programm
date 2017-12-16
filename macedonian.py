@@ -97,50 +97,27 @@ while line:
 		line = line.replace ('“', ' “')
 		line = line.replace ('"', ' " ')
 
-		for word in line
+		# Now we start working with the words
+		for word in line: 
+			for c in table1: 
+				word = word.replace(c, table1[c]) # First step of transliteration = change the letters according to the first dictionary
 
-
-
-
-#read through lines in a file
-for line in sys.stdin.readlines():
-		line = line.strip('\n') #remove all lines
-		if line == '': #if the line is blank (sentence boundary)
-				print()
-				continue
-		if line[0] == '#': #if the line is a comment
-				print (line)
-				continue
-
-		row = line.split('\t')
-		# take the wordform (column 2)
-		transliterated = row[1]
-
-		# transliterate it
-		for c in table:
-				transliterated = transliterated.replace(c, table[c])
-		# set the 10th column to the transliterted form
-		row[9] = 'Translit=' + transliterated
-
-		#print out line separated by tabs
-		print('\t'.join(row))
+		for word in line: 
+			for c in table2: 
+				word = word.replace(c, table2[c]) # Second step of transliteration 
 
 
 		# We are  translating some of the words and some of the words'parts
 		# We will use spaces in the beginning or/and in the end of the word
 		# to identify that we work with the word or that we work only with the end of the word
-		line = line.replace (' йас ', ' я ')
+		line = line.replace (' йас ', ' я ')  # from here start pronouns
 		line = line.replace (' ти ', ' ты ')
-		line = line.replace (' ?', '?')
-		line = line.replace (' !', '!')
-		line = line.replace (' :', ':')
-		line = line.replace (' )', ')')
-		line = line.replace ('( ', '(')
-		line = line.replace ('„ ', '„')
-		line = line.replace (' “', '“')
-		line = line.replace (' " ', '"')
+		line = line.replace ('ски ', 'ский ') # from here start endings
+		line = line.replace ('ска ', 'ская ')
+		line = line.replace ('ско', 'ское ')
 
-# I will increase the number later, now want to fix programming problems
+# I will increase the number of pronouns later, now want to fix programming problems
+# And I wil do the separate file which explains what is the program + example of output
 	
 		# We are returning the punctuational marks to the original position
 		line = line.replace (' .', '.')
@@ -153,9 +130,11 @@ for line in sys.stdin.readlines():
 		line = line.replace ('„ ', '„')
 		line = line.replace (' “', '“')
 		line = line.replace (' " ', '"')
-# Do the separate file which explains what is the program + example of output
-#For what we need this line?
-		line = sys.stdin.readline() #Thisline should be in the end of this whole line
+
+		print('Changed sentence = %s' % (line)) # Printed the changed sentence. 
+
+
+
 
 
 # ------------------------------------------------------------------- above is made, below is in process (actually it is the middle part)
