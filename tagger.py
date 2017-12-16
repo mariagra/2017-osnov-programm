@@ -41,6 +41,22 @@ for line in sys.stdin.readlines():
 	if line[0] == '#': #if the line is a comment
 		print (line)
 		continue
+	#if the line doesn't contain a tab, skip it
+	if '\t' not in line:
+		continue
+	# make a list of columns
+	row = line.split('\t')
+
+	form = row[1]
+
+	if form in freq_word_tag: # If we have the form from the text in the model, we take the tag from the model
+		row[3] = freq_word[tag]
+	if form not in freq_word_tag: # If not, we choose the most frequet tag from all
+		row[3] = freq_tag
+		
+
+
+	
 
 
 	
